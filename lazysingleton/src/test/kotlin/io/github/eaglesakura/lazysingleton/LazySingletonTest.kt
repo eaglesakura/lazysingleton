@@ -1,4 +1,4 @@
-package com.eaglesakura.armyknife.runtime
+package io.github.eaglesakura.lazysingleton
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
@@ -12,7 +12,7 @@ class LazySingletonTest {
         val singleton = LazySingleton<String>()
 
         val instance1 = singleton.get {
-            Random.largeString()
+            "${System.currentTimeMillis()}"
         }
 
         val instance2 = singleton.get {

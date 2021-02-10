@@ -1,4 +1,4 @@
-package com.eaglesakura.armyknife.runtime
+package io.github.eaglesakura.lazysingleton
 
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
@@ -21,13 +21,25 @@ import kotlin.concurrent.withLock
  * }
  *
  * @author @eaglesakura
- * @link https://github.com/eaglesakura/army-knife
+ * @link https://github.com/eaglesakura/lazysingleton
  */
 class LazySingleton<T> {
     private var instance: T? = null
 
     private val lock = ReentrantLock()
 
+    /**
+     * Reset instance cache.
+     */
+    fun reset() {
+        lock.withLock {
+            instance = null
+        }
+    }
+
+    /**
+     * get or create instance.
+     */
     fun get(factory: () -> T): T {
         if (instance == null) {
             lock.withLock {
