@@ -1,30 +1,30 @@
-# What is this repository?
+# What is this?
 
-Library for android applications with Kotlin.
+Lazy init object wrapper.
 
-armyknife is small library, but it can be more small. If you have to shrink to application, then proguard-options set to
-enable.
+# Example
 
-# how to implementation into your project
+```kotlin
+private val instance: LazySingleton<Foo>()
+
+fun getFoo(context: Context): Foo {
+    return instance.get {
+        // this block call once.
+        // init with Argument.
+        Foo(context)
+    }
+}
+```
+
+# How to install
 
 ```groovy
 // build.gradle
 dependencies {
-    implementation 'io.github.eaglesakura.armyknife-runtime:armyknife-runtime:${replace version}'
+    implementation 'io.github.eaglesakura.lazysingleton:lazysingleton:${replace version}'
 }
 ```
 
-## Dev / LocalInstall
+# LICENSE
 
-```sh
-./gradlew -Pinstall_snapshot build uploadArchives
-```
-
-```groovy
-repositories {
-    mavenLocal()
-}
-
-// replace version("major.minor.99999")
-implementation 'io.github.eaglesakura.armyknife-runtime:armyknife-runtime:${replace version}'
-```
+[LICENSE.txt](LICENSE.txt)

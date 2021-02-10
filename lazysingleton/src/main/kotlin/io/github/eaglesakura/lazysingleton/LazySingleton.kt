@@ -13,10 +13,11 @@ import kotlin.concurrent.withLock
  * e.g.)
  * val instance : LazySingleton<Foo>()
  *
- * fun getFoo() : Foo {
- *      instance.get {
+ * fun getFoo(context: Context) : Foo {
+ *      return instance.get {
  *          // this block call once.
- *          Foo()
+ *          // init with Argument.
+ *          Foo(context)
  *      }
  * }
  *
