@@ -21,7 +21,7 @@ fun getFoo(context: Context): Foo {
 ```groovy
 // build.gradle
 dependencies {
-    implementation 'io.github.eaglesakura.lazysingleton:lazysingleton:${replace version}'
+    implementation 'io.github.eaglesakura.lazysingleton:lazysingleton:+'
 }
 ```
 
